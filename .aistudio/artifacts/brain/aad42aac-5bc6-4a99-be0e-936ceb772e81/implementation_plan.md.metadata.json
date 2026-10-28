@@ -1,0 +1,6 @@
+{
+  "summary":  "Especificação completa e arquitetura de entrega da 'mine-skill': pacote autônomo agnóstico de frameworks (mine-theme.css, mine-mobs.js, mine-toggle.js, README.md) com exportação em ZIP, mobs vetoriais SVG autônomos (Creeper e Ovelha Rosa) com patrulha e pausas de pastagem, e ambiente de teste multi-arquétipo (E-commerce, SaaS e Institucional).",
+  "updatedAt":  "2026-10-28T11:35:39.047299870Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}

@@ -1,0 +1,6 @@
+{
+  "name": "mine-skill: Minecraft Theme & Mobs Engine",
+  "description": "Pacote agnóstico para transformar qualquer site web em uma experiência temática de Minecraft com mobs decorativos autônomos, GUI clássica e exportador ZIP.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

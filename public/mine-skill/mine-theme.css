@@ -1,0 +1,318 @@
+/**
+ * mine-theme.css - Minecraft GUI Design System
+ * Compatible with Vanilla HTML, React, Next.js, Vue, Svelte, and modern CSS frameworks.
+ * Part of mine-skill.
+ *
+ * REGRA UNIVERSAL:
+ * 1. Zero Transparência: Todos os containers (cards, slots, painéis) são 100% sólidos e opacos.
+ * 2. Fundo Escuro => Letras Claras (#ffffff e #cbd5e1).
+ * 3. Fundo Claro => Letras Escuras (#111111 e #27272a).
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ==========================================================================
+   1. Root Variables & Bevel Palette (100% Solid)
+   ========================================================================== */
+:root {
+  --mc-font: 'Press Start 2P', monospace;
+  
+  /* Classic GUI Palette */
+  --mc-gui-bg: #c6c6c6;
+  --mc-gui-light: #ffffff;
+  --mc-gui-mid-light: #dbdbdb;
+  --mc-gui-mid-dark: #555555;
+  --mc-gui-dark: #373737;
+  --mc-gui-black: #000000;
+  
+  /* Deep Sunken Slot Palette (100% Solid & Dark for high contrast) */
+  --mc-slot-bg: #121214;
+  --mc-slot-border-dark: #000000;
+  --mc-slot-border-light: #2c2c32;
+  
+  /* Button Palette (Stone / Normal) */
+  --mc-btn-bg: #727272;
+  --mc-btn-hover: #838383;
+  --mc-btn-active: #5a5a5a;
+  --mc-btn-disabled: #444444;
+  --mc-text-shadow: #1a1a1a;
+  --mc-btn-text: #ffffff;
+  
+  /* Wood Button Palette */
+  --mc-btn-wood-bg: #85542b;
+  --mc-btn-wood-light: #a66a37;
+  --mc-btn-wood-dark: #4b2e16;
+  
+  /* Gold / Emerald Accents */
+  --mc-gold: #fcee4c;
+  --mc-emerald: #55ff55;
+  --mc-redstone: #ff5555;
+  --mc-diamond: #55ffff;
+}
+
+/* ==========================================================================
+   2. Global Theme Container Overrides (.mine-theme)
+   ========================================================================== */
+.mine-theme {
+  background-color: #1a1a1e !important;
+  color: #f8fafc !important;
+  font-family: inherit;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  position: relative;
+}
+
+/* Zero transparência em todos os componentes temáticos */
+.mine-theme,
+.mine-theme .mine-card,
+.mine-theme .mine-panel,
+.mine-theme .mine-box,
+.mine-theme .mine-slot,
+.mine-theme button,
+.mine-theme input,
+.mine-theme textarea,
+.mine-theme select {
+  opacity: 1 !important;
+}
+
+/* Pixel Font for headings and interactive elements */
+.mine-theme h1,
+.mine-theme h2,
+.mine-theme h3,
+.mine-theme h4,
+.mine-theme .mine-pixel-text,
+.mine-theme .mine-btn,
+.mine-theme button:not(.mine-no-theme),
+.mine-theme .mine-badge {
+  font-family: var(--mc-font), monospace !important;
+  letter-spacing: -0.5px;
+}
+
+.mine-theme h1 { font-size: 1.25rem; line-height: 1.6; }
+.mine-theme h2 { font-size: 1rem; line-height: 1.5; }
+.mine-theme h3 { font-size: 0.85rem; line-height: 1.4; }
+.mine-theme h4 { font-size: 0.75rem; line-height: 1.4; }
+
+/* Force crisp sharp corners on all themed elements */
+.mine-theme * {
+  border-radius: 0px !important;
+}
+
+/* ==========================================================================
+   3. SUPERFÍCIES CLARAS (GUI Clássica Minecraft #c6c6c6)
+   REGRA: Fundo Claro => Letras Escuras (#111111 / #27272a)
+   ========================================================================== */
+.mine-box,
+.mine-theme .mine-panel {
+  background-color: #c6c6c6 !important;
+  opacity: 1 !important;
+  box-shadow: 
+    inset -2px -2px 0px 0px var(--mc-gui-mid-dark),
+    inset 2px 2px 0px 0px var(--mc-gui-light),
+    inset -4px -4px 0px 0px var(--mc-gui-dark),
+    inset 4px 4px 0px 0px var(--mc-gui-mid-light);
+  border: 2px solid #000000 !important;
+  padding: 16px;
+  color: #111111 !important;
+}
+
+.mine-panel h1, .mine-panel h2, .mine-panel h3, .mine-panel h4,
+.mine-theme .mine-panel h1, .mine-theme .mine-panel h2, .mine-theme .mine-panel h3, .mine-theme .mine-panel h4,
+.mine-theme .mine-panel .text-slate-900,
+.mine-theme .mine-panel .text-slate-800,
+.mine-theme .mine-panel strong {
+  color: #111111 !important;
+  text-shadow: none !important;
+}
+
+.mine-panel p,
+.mine-theme .mine-panel p,
+.mine-theme .mine-panel .text-slate-600,
+.mine-theme .mine-panel .text-slate-500 {
+  color: #27272a !important;
+  text-shadow: none !important;
+}
+
+/* ==========================================================================
+   4. SUPERFÍCIES ESCURAS (Cards de Produtos e Mídias)
+   REGRA: Fundo Escuro => Letras Claras (#ffffff e #cbd5e1)
+   ========================================================================== */
+.mine-card,
+.mine-theme .mine-card {
+  background-color: #242429 !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 
+    inset 3px 3px 0px 0px #424248,
+    inset -3px -3px 0px 0px #111113,
+    0 4px 0 0 #000000 !important;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mine-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 3px 3px 0px 0px #585860,
+    inset -3px -3px 0px 0px #0b0b0c,
+    0 6px 0 0 #000000 !important;
+}
+
+.mine-card h1, .mine-card h2, .mine-card h3, .mine-card h4, .mine-card h5, .mine-card h6,
+.mine-theme .mine-card h1, .mine-theme .mine-card h2, .mine-theme .mine-card h3, .mine-theme .mine-card h4,
+.mine-theme .mine-card .text-slate-900,
+.mine-theme .mine-card .text-slate-800,
+.mine-theme .mine-card .text-slate-700,
+.mine-theme .mine-card strong {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 0px #000000 !important;
+}
+
+.mine-card p,
+.mine-card span:not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-red"]):not([class*="text-cyan"]),
+.mine-card li,
+.mine-theme .mine-card p,
+.mine-theme .mine-card span:not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-red"]):not([class*="text-cyan"]),
+.mine-theme .mine-card .text-slate-600,
+.mine-theme .mine-card .text-slate-500,
+.mine-theme .mine-card .text-slate-400 {
+  color: #cbd5e1 !important;
+}
+
+/* ==========================================================================
+   5. SLOTS DE INVENTÁRIO (Totalmente Opacos & Alto Contraste)
+   ========================================================================== */
+.mine-slot,
+.mine-theme .mine-slot,
+.mine-theme input[type="text"],
+.mine-theme input[type="search"],
+.mine-theme input[type="email"],
+.mine-theme input[type="number"],
+.mine-theme textarea,
+.mine-theme select {
+  background-color: #121214 !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px #000000,
+    inset -2px -2px 0px 0px #2c2c32 !important;
+  padding: 8px 12px;
+  font-family: var(--mc-font), monospace;
+  font-size: 0.75rem;
+  outline: none;
+}
+
+.mine-slot *,
+.mine-theme .mine-slot * {
+  color: #ffffff !important;
+}
+
+.mine-slot .text-slate-400,
+.mine-slot .text-slate-500,
+.mine-theme .mine-slot .text-slate-400,
+.mine-theme .mine-slot .text-slate-500 {
+  color: #cbd5e1 !important;
+}
+
+.mine-theme input:focus,
+.mine-theme textarea:focus,
+.mine-theme select:focus {
+  border-color: var(--mc-diamond) !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px #000000,
+    inset -2px -2px 0px 0px #ffffff,
+    0 0 0 2px var(--mc-diamond) !important;
+}
+
+/* ==========================================================================
+   6. BOTÕES MINECRAFT
+   ========================================================================== */
+.mine-btn,
+.mine-theme button:not(.mine-no-theme),
+.mine-theme a.mine-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #727272 !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  text-shadow: 2px 2px 0px #1a1a1a;
+  border: 2px solid #000000 !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px #a2a2a2,
+    inset -2px -2px 0px 0px #383838 !important;
+  font-family: var(--mc-font), monospace;
+  font-size: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  position: relative;
+  transition: filter 0.05s ease, transform 0.05s ease;
+}
+
+.mine-btn:hover,
+.mine-theme button:not(.mine-no-theme):hover {
+  background-color: #838383 !important;
+  color: #ffffa0 !important;
+}
+
+.mine-btn:active,
+.mine-theme button:not(.mine-no-theme):active {
+  background-color: #5a5a5a !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px #242424,
+    inset -2px -2px 0px 0px #7a7a7a !important;
+  transform: translateY(1px);
+}
+
+.mine-btn-wood {
+  background-color: var(--mc-btn-wood-bg) !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px var(--mc-btn-wood-light),
+    inset -2px -2px 0px 0px var(--mc-btn-wood-dark) !important;
+}
+
+.mine-btn-diamond {
+  background-color: #2c6c72 !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px var(--mc-diamond),
+    inset -2px -2px 0px 0px #123438 !important;
+}
+
+/* Imagens do produto mantêm 100% de nitidez */
+.mine-theme img,
+.mine-card img {
+  image-rendering: auto !important;
+  border-bottom: 2px solid #000000;
+  opacity: 1 !important;
+}
+
+.mine-item-frame {
+  border: 2px solid #5a381d !important;
+  background-color: #3b2413 !important;
+  opacity: 1 !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px #7d512a,
+    inset -2px -2px 0px 0px #1f1207 !important;
+  padding: 4px;
+}
+
+.mine-lore {
+  background: #100010 !important;
+  opacity: 1 !important;
+  border: 2px solid #28007f !important;
+  box-shadow: 
+    inset 1px 1px 0px 0px #5000ff,
+    inset -1px -1px 0px 0px #180050 !important;
+  padding: 6px 10px;
+  color: #ffffff !important;
+  font-family: var(--mc-font), monospace;
+  font-size: 0.65rem;
+  line-height: 1.5;
+  text-shadow: 1px 1px 0px #3f3f3f;
+}

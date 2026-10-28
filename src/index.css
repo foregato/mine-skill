@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   mine-skill Core CSS Integration
+   Zero Transparência · Contraste Rigoroso · 100% Opaco
+   ========================================================================== */
+:root {
+  --mc-font: 'Press Start 2P', monospace;
+  
+  /* Classic GUI Palette (100% Solid) */
+  --mc-gui-bg: #c6c6c6;
+  --mc-gui-light: #ffffff;
+  --mc-gui-mid-light: #dbdbdb;
+  --mc-gui-mid-dark: #555555;
+  --mc-gui-dark: #373737;
+  
+  /* Deep Sunken Slot Palette (100% Opaque & Dark for high contrast) */
+  --mc-slot-bg: #121214;
+  --mc-slot-border-dark: #000000;
+  --mc-slot-border-light: #2c2c32;
+  
+  /* Button Palette (100% Solid) */
+  --mc-btn-bg: #727272;
+  --mc-btn-hover: #838383;
+  --mc-btn-active: #5a5a5a;
+  --mc-btn-disabled: #444444;
+  --mc-text-shadow: #1c1c1c;
+  --mc-btn-text: #ffffff;
+  --mc-btn-wood-bg: #85542b;
+  --mc-btn-wood-light: #a66a37;
+  --mc-btn-wood-dark: #4b2e16;
+  
+  /* Vivid Accents */
+  --mc-gold: #fcee4c;
+  --mc-emerald: #55ff55;
+  --mc-redstone: #ff5555;
+  --mc-diamond: #55ffff;
+}
+
+/* Base Body font */
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   1. REGRA DE OURO: ZERO TRANSPARÊNCIA (100% Sólido e Opaco)
+   ========================================================================== */
+.mine-theme {
+  background-color: #1a1a1e !important;
+  color: #f8fafc !important;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Nenhum elemento do tema Minecraft pode ser transparente */
+.mine-theme,
+.mine-theme .mine-card,
+.mine-theme .mine-panel,
+.mine-theme .mine-box,
+.mine-theme .mine-slot,
+.mine-theme button,
+.mine-theme input,
+.mine-theme textarea,
+.mine-theme select {
+  opacity: 1 !important;
+}
+
+.mine-theme h1,
+.mine-theme h2,
+.mine-theme h3,
+.mine-theme h4,
+.mine-theme .mine-pixel-text,
+.mine-theme .mine-btn,
+.mine-theme button:not(.mine-no-theme),
+.mine-theme .mine-badge {
+  font-family: var(--mc-font), monospace !important;
+  letter-spacing: -0.5px;
+}
+
+.mine-theme h1 { font-size: 1.25rem; line-height: 1.6; }
+.mine-theme h2 { font-size: 1rem; line-height: 1.5; }
+.mine-theme h3 { font-size: 0.85rem; line-height: 1.4; }
+.mine-theme h4 { font-size: 0.75rem; line-height: 1.4; }
+
+.mine-theme * {
+  border-radius: 0px !important;
+}
+
+/* ==========================================================================
+   2. SUPERFÍCIES CLARAS (GUI Clássica Minecraft #c6c6c6)
+   REGRA: Fundo Claro => Letras Escuras (#111111 / #27272a)
+   ========================================================================== */
+.mine-box,
+.mine-theme .mine-panel {
+  background-color: #c6c6c6 !important;
+  opacity: 1 !important;
+  box-shadow: 
+    inset -2px -2px 0px 0px var(--mc-gui-mid-dark),
+    inset 2px 2px 0px 0px var(--mc-gui-light),
+    inset -4px -4px 0px 0px var(--mc-gui-dark),
+    inset 4px 4px 0px 0px var(--mc-gui-mid-light);
+  border: 2px solid #000000 !important;
+  color: #111111 !important;
+}
+
+/* Força texto escuro em qualquer container com fundo claro */
+.mine-panel h1, .mine-panel h2, .mine-panel h3, .mine-panel h4,
+.mine-theme .mine-panel h1, .mine-theme .mine-panel h2, .mine-theme .mine-panel h3, .mine-theme .mine-panel h4,
+.mine-theme .mine-panel .text-slate-900,
+.mine-theme .mine-panel .text-slate-800,
+.mine-theme .mine-panel strong {
+  color: #111111 !important;
+  text-shadow: none !important;
+}
+
+.mine-panel p,
+.mine-theme .mine-panel p,
+.mine-theme .mine-panel .text-slate-600,
+.mine-theme .mine-panel .text-slate-500 {
+  color: #27272a !important;
+  text-shadow: none !important;
+}
+
+/* ==========================================================================
+   3. SUPERFÍCIES ESCURAS (Cards de Produtos, Slots e Áreas de Destaque)
+   REGRA: Fundo Escuro => Letras Claras (#ffffff e #cbd5e1)
+   ========================================================================== */
+.mine-card,
+.mine-theme .mine-card {
+  background-color: #242429 !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 
+    inset 3px 3px 0px 0px #424248,
+    inset -3px -3px 0px 0px #111113,
+    0 4px 0 0 #000000 !important;
+}
+
+/* Força texto claro em qualquer container com fundo escuro */
+.mine-card h1, .mine-card h2, .mine-card h3, .mine-card h4, .mine-card h5, .mine-card h6,
+.mine-theme .mine-card h1, .mine-theme .mine-card h2, .mine-theme .mine-card h3, .mine-theme .mine-card h4,
+.mine-theme .mine-card .text-slate-900,
+.mine-theme .mine-card .text-slate-800,
+.mine-theme .mine-card .text-slate-700,
+.mine-theme .mine-card strong {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 0px #000000 !important;
+}
+
+.mine-card p,
+.mine-card span:not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-red"]):not([class*="text-cyan"]),
+.mine-card li,
+.mine-theme .mine-card p,
+.mine-theme .mine-card span:not([class*="text-emerald"]):not([class*="text-amber"]):not([class*="text-red"]):not([class*="text-cyan"]),
+.mine-theme .mine-card .text-slate-600,
+.mine-theme .mine-card .text-slate-500,
+.mine-theme .mine-card .text-slate-400 {
+  color: #cbd5e1 !important;
+}
+
+/* ==========================================================================
+   4. SLOTS REBAIXADOS DE INVENTÁRIO (Totalmente Opacos & Alto Contraste)
+   ========================================================================== */
+.mine-slot,
+.mine-theme .mine-slot,
+.mine-theme input,
+.mine-theme select,
+.mine-theme textarea {
+  background-color: #121214 !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px #000000,
+    inset -2px -2px 0px 0px #2c2c32 !important;
+  outline: none;
+}
+
+/* Texto dentro dos slots: títulos/valores em branco vivo, labels em prata */
+.mine-slot *,
+.mine-theme .mine-slot * {
+  color: #ffffff !important;
+}
+
+.mine-slot .text-slate-400,
+.mine-slot .text-slate-500,
+.mine-theme .mine-slot .text-slate-400,
+.mine-theme .mine-slot .text-slate-500 {
+  color: #cbd5e1 !important;
+}
+
+/* ==========================================================================
+   5. BOTÕES MINECRAFT (100% Sólidos e Opacos)
+   ========================================================================== */
+.mine-btn,
+.mine-theme button:not(.mine-no-theme),
+.mine-theme a.mine-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #727272 !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  text-shadow: 2px 2px 0px #1a1a1a;
+  border: 2px solid #000000 !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px #a2a2a2,
+    inset -2px -2px 0px 0px #383838 !important;
+  font-family: var(--mc-font), monospace !important;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.05s ease;
+}
+
+.mine-btn:hover,
+.mine-theme button:not(.mine-no-theme):hover {
+  background-color: #838383 !important;
+  color: #ffffa0 !important;
+}
+
+.mine-btn:active,
+.mine-theme button:not(.mine-no-theme):active {
+  background-color: #5a5a5a !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px #242424,
+    inset -2px -2px 0px 0px #7a7a7a !important;
+  transform: translateY(1px);
+}
+
+.mine-btn-wood {
+  background-color: var(--mc-btn-wood-bg) !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px var(--mc-btn-wood-light),
+    inset -2px -2px 0px 0px var(--mc-btn-wood-dark) !important;
+}
+
+.mine-btn-diamond {
+  background-color: #2c6c72 !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px var(--mc-diamond),
+    inset -2px -2px 0px 0px #123438 !important;
+}
+
+/* Item Frame */
+.mine-item-frame {
+  border: 2px solid #5a381d !important;
+  background-color: #3b2413 !important;
+  opacity: 1 !important;
+  box-shadow: 
+    inset 2px 2px 0px 0px #7d512a,
+    inset -2px -2px 0px 0px #1f1207 !important;
+}
+
+/* Imagens do produto mantêm fidelidade total */
+.mine-theme img,
+.mine-card img {
+  image-rendering: auto !important;
+  border-bottom: 2px solid #000000;
+  opacity: 1 !important;
+}
+
+/* Lore Tooltip */
+.mine-lore {
+  background: #100010 !important;
+  opacity: 1 !important;
+  border: 2px solid #28007f !important;
+  box-shadow: 
+    inset 1px 1px 0px 0px #5000ff,
+    inset -1px -1px 0px 0px #180050 !important;
+  color: #ffffff !important;
+  font-family: var(--mc-font), monospace !important;
+}
